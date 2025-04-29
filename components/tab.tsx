@@ -70,7 +70,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 16,
     marginBottom: 8,
-    borderRadius: 16,
+    borderRadius: 8,
   },
   tabLabel: {
     fontSize: 12,
