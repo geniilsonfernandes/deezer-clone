@@ -1,32 +1,39 @@
+import { useAnimatedBackgroundColor } from "@/hooks/useAnimatedBackgroundColor";
 import {
-    CLOSE_HEIGHT,
-    OPEN_HEIGHT,
-    useFloatingPlayerAnimation,
+  CLAMPS,
+  useFloatingPlayerAnimation,
 } from "@/hooks/useFloatingPlayerAnimation";
 import { ChevronLast, Heart, Play } from "lucide-react-native";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { GestureDetector } from "react-native-gesture-handler";
 import Animated, {
-    interpolate,
-    useAnimatedStyle,
+  interpolate,
+  useAnimatedStyle,
 } from "react-native-reanimated";
 
 export const FloatingPlayer = () => {
-  const { panGesture, animatedStyle, height } = useFloatingPlayerAnimation();
+  const { panGesture, animatedStyle, tapGesture, height } =
+    useFloatingPlayerAnimation();
+  // color transtion hook
+  const backgroundColor = useAnimatedBackgroundColor("#315F38");
 
-  const animatedStyleD = useAnimatedStyle(() => {
+  const pressableAnimatedStyledPressable = useAnimatedStyle(() => {
     return {
-      opacity: interpolate(height.value, [CLOSE_HEIGHT/3, OPEN_HEIGHT/3], [1, 0]),
+      opacity: interpolate(
+        height.value,
+        [CLAMPS.BIG.START, CLAMPS.BIG.END],
+        [1, 0]
+      ),
       transform: [
         {
           translateY: interpolate(
             height.value,
-            [CLOSE_HEIGHT, OPEN_HEIGHT],
+            [CLAMPS.START, CLAMPS.END],
             [0, 64]
           ),
         },
-      ]
+      ],
     };
   });
 
@@ -38,43 +45,54 @@ export const FloatingPlayer = () => {
             {
               position: "absolute",
               bottom: 0,
-              height: 64,
+
               width: "100%",
-              paddingHorizontal: 16,
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: 16,
+
+              overflow: "hidden",
             },
-            animatedStyleD,
+            pressableAnimatedStyledPressable,
+            backgroundColor,
           ]}
         >
-          <Play color="#fff" />
-          <View
+          <Pressable
+            onPress={tapGesture}
+            android_ripple={{ color: "#ffffff50" }}
             style={{
-              flex: 1,
+              flexDirection: "row",
+              alignItems: "center",
+              height: 64,
+              paddingHorizontal: 16,
+              justifyContent: "space-between",
+              gap: 16,
             }}
           >
-            <Text
+            <Play color="#fff" />
+            <View
               style={{
-                fontWeight: "bold",
-                color: "#fff",
+                flex: 1,
               }}
             >
-              Heathens
-            </Text>
-            <Text
-              style={{
-                color: "#fff",
-                opacity: 0.7,
-              }}
-            >
-              Twenty One Pilots - Heathens
-            </Text>
-          </View>
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  color: "#fff",
+                }}
+              >
+                Heathens
+              </Text>
+              <Text
+                style={{
+                  color: "#fff",
+                  opacity: 0.7,
+                }}
+              >
+                Twenty One Pilots - Heathens
+              </Text>
+            </View>
 
-          <Heart color="#fff" />
-          <ChevronLast color="#fff" />
+            <Heart color="#fff" />
+            <ChevronLast color="#fff" />
+          </Pressable>
         </Animated.View>
       </Animated.View>
     </GestureDetector>
