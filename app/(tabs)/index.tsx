@@ -1,6 +1,15 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
+import { Gesture } from "react-native-gesture-handler";
 
 export default function TabOneScreen() {
+  const tapGesture = Gesture.Tap()
+    .onBegin(() => {
+      // rippleOpacity.value = withTiming(0.2, { duration: 100 });
+    })
+    .onFinalize(() => {
+      // rippleOpacity.value = withTiming(0, { duration: 300 });
+    });
+
   return (
     <View
       style={{
@@ -9,14 +18,6 @@ export default function TabOneScreen() {
         justifyContent: "center",
         backgroundColor: "#0F0C13",
       }}
-    >
-      <Text
-        style={{
-          color: "#fff",
-        }}
-      >
-        Home
-      </Text>
-    </View>
+    ></View>
   );
 }

@@ -1,11 +1,16 @@
 import { Stack } from "expo-router";
 
+import { FloatingPlayer } from "@/components/FloatingPlayer";
 import { useFonts } from "expo-font";
 import * as NavigationBar from "expo-navigation-bar";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import { Platform } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+
+// TODO: VER COMO FUNCIONA ESSES GESTURES
+// Gesture.Tap()
+//  Gesture.Pinch();
 
 export default function RootLayout() {
   const [loaded] = useFonts({});
@@ -37,7 +42,7 @@ export default function RootLayout() {
   }
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView style={{ flex: 1, position: "relative" }}>
       {/* <BottomSheetModalProvide> */}
       <Stack
         screenOptions={{
@@ -51,6 +56,7 @@ export default function RootLayout() {
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="+not-found" />
       </Stack>
+      <FloatingPlayer />
       <StatusBar style="light" />
       {/* </BottomSheetModalProvide> */}
     </GestureHandlerRootView>
