@@ -46,7 +46,7 @@ export default function RootLayout() {
             backgroundColor: "#0F0C13",
           },
         }}
-        initialRouteName=""
+        initialRouteName="(tabs)"
       >
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="+not-found" />

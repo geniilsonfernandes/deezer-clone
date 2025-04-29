@@ -1,14 +1,16 @@
-import { tabBarButton, TabBarIcon, tabBarLabel, styles as tabStyles } from "@/components/tab";
+import { CompassIcon } from "@/components/svg/compass-icon";
+import { HeartIcon } from "@/components/svg/heart-icon";
+import { HouseIcon } from "@/components/svg/house-icon";
+import { SearchIcon } from "@/components/svg/search-icon";
+import {
+  tabBarButton,
+  TabBarIcon,
+  tabBarLabel,
+  styles as tabStyles,
+} from "@/components/tab";
 import { BRAND } from "@/styles/theme";
 import { Tabs } from "expo-router";
-import { Compass, Heart, Home, Search } from "lucide-react-native";
 import React from "react";
-
-
-
-
-
-
 
 export default function TabLayout() {
   return (
@@ -33,7 +35,7 @@ export default function TabLayout() {
           title: "Home",
           tabBarIcon: ({ focused, color }) => (
             <TabBarIcon focused={focused}>
-              <Home color={color} />
+              <HouseIcon color={color} fill={focused ? color : undefined} />
             </TabBarIcon>
           ),
         }}
@@ -44,7 +46,7 @@ export default function TabLayout() {
           title: "Explore",
           tabBarIcon: ({ focused, color }) => (
             <TabBarIcon focused={focused}>
-              <Compass color={color} />
+              <CompassIcon color={color} fill={focused ? color : undefined} />
             </TabBarIcon>
           ),
         }}
@@ -55,7 +57,7 @@ export default function TabLayout() {
           title: "Favorites",
           tabBarIcon: ({ focused, color }) => (
             <TabBarIcon focused={focused}>
-              <Heart color={color} />
+              <HeartIcon color={color} fill={focused ? color : undefined} />
             </TabBarIcon>
           ),
         }}
@@ -66,7 +68,7 @@ export default function TabLayout() {
           title: "Search",
           tabBarIcon: ({ focused, color }) => (
             <TabBarIcon focused={focused}>
-              <Search color={color} />
+              <SearchIcon color={color} fill={focused ? color : undefined} />
             </TabBarIcon>
           ),
         }}
