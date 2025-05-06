@@ -1,6 +1,6 @@
 import { Stack } from "expo-router";
 
-import { FloatingPlayer } from "@/components/FloatingPlayer";
+import { FloatingPlayer } from "@/components/floating-player";
 import { useFonts } from "expo-font";
 import * as NavigationBar from "expo-navigation-bar";
 import { StatusBar } from "expo-status-bar";
@@ -57,7 +57,7 @@ export default function RootLayout() {
         <Stack.Screen name="+not-found" />
       </Stack>
       <FloatingPlayer />
-      <StatusBar style="light" />
+      <StatusBar style="auto" />
       {/* </BottomSheetModalProvide> */}
     </GestureHandlerRootView>
   );

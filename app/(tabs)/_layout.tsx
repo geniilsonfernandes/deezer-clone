@@ -20,6 +20,7 @@ export default function TabLayout() {
         headerShadowVisible: false,
         animation: "fade",
         tabBarActiveTintColor: BRAND[100],
+
         tabBarHideOnKeyboard: true,
         tabBarStyle: tabStyles.tabBar,
         tabBarLabel: tabBarLabel,
@@ -35,7 +36,7 @@ export default function TabLayout() {
           title: "Home",
           tabBarIcon: ({ focused, color }) => (
             <TabBarIcon focused={focused}>
-              <HouseIcon color={color} fill={focused ? color : undefined} />
+              <HouseIcon color={color} fill={focused ? color : "transparent"} />
             </TabBarIcon>
           ),
         }}
@@ -46,7 +47,10 @@ export default function TabLayout() {
           title: "Explore",
           tabBarIcon: ({ focused, color }) => (
             <TabBarIcon focused={focused}>
-              <CompassIcon color={color} fill={focused ? color : undefined} />
+              <CompassIcon
+                color={color}
+                fill={focused ? color : "transparent"}
+              />
             </TabBarIcon>
           ),
         }}
@@ -57,7 +61,7 @@ export default function TabLayout() {
           title: "Favorites",
           tabBarIcon: ({ focused, color }) => (
             <TabBarIcon focused={focused}>
-              <HeartIcon color={color} fill={focused ? color : undefined} />
+              <HeartIcon color={color} fill={focused ? color : "transparent"} />
             </TabBarIcon>
           ),
         }}
@@ -68,7 +72,10 @@ export default function TabLayout() {
           title: "Search",
           tabBarIcon: ({ focused, color }) => (
             <TabBarIcon focused={focused}>
-              <SearchIcon color={color} fill={focused ? color : undefined} />
+              <SearchIcon
+                color={color}
+                fill={focused ? color : "transparent"}
+              />
             </TabBarIcon>
           ),
         }}
